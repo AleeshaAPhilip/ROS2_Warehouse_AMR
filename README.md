@@ -3,6 +3,8 @@
 Differential-drive AMR in a Gazebo Harmonic warehouse, built with SLAM Toolbox,
 AMCL, robot_localization, Nav2 and ros2_control.
 
+![Phase 1: Gazebo and RViz](docs/phase1.png)
+
 
 ## Status
 - [x] Phase 1: robot model, Gazebo warehouse, sensors, ros2_control, teleop
