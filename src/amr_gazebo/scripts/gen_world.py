@@ -22,10 +22,19 @@ box('wall_s', 0, -6.1, 1.0, 16.4, 0.2, 2.0, GREY)
 box('wall_e',  8.1, 0, 1.0, 0.2, 12.0, 2.0, GREY)
 box('wall_w', -8.1, 0, 1.0, 0.2, 12.0, 2.0, GREY)
 
-# 4 rows x 4 shelves (2.0 x 0.6 x 1.8 m) -> aisles about 1.4 m wide
-for r, y in enumerate([3.6, 1.6, -1.6, -3.6]):
-    for i, x in enumerate([-1.0, 1.0, 3.0, 5.0]):
+# shelf rows with cross-aisle gaps; every row is different so no two aisles look alike
+ROWS = {3.6:  [-1.0, 1.0, 4.6, 6.6],
+        1.6:  [-1.0, 2.6, 4.6, 6.6],
+        -1.6: [-1.0, 1.0, 3.0, 6.6],
+        -3.6: [-0.4, 1.6, 3.6, 5.6]}
+for r, (y, xs) in enumerate(ROWS.items()):
+    for i, x in enumerate(xs):
         box(f'shelf_{r}_{i}', x, y, 0.9, 2.0, 0.6, 1.8, ORANGE if (r + i) % 2 else BLUE)
+
+# crates: distinctive obstacles in the open areas
+box('crate_1',  1.5,  0.7, 0.25, 0.5, 0.5, 0.5, '0.5 0.35 0.2')
+box('crate_2',  4.0, -0.6, 0.30, 0.6, 0.6, 0.6, '0.5 0.35 0.2')
+box('crate_3', -4.5,  1.5, 0.25, 0.5, 0.5, 0.5, '0.5 0.35 0.2')
 
 # pillars (extra features help SLAM)
 box('pillar_n', -3.5,  3.0, 1.0, 0.4, 0.4, 2.0, GREY)
