@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>amr_slam</name>
-  <version>0.0.0</version>
+  <version>1.0.0</version>
   <description>SLAM Toolbox mapping configuration and launch for the warehouse AMR</description>
   <maintainer email="aleeshaaphilip2004@gmail.com">aleesha</maintainer>
   <license>Apache-2.0</license>

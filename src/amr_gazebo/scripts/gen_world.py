@@ -77,3 +77,19 @@ out = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'worlds', '
 os.makedirs(os.path.dirname(out), exist_ok=True)
 open(out, 'w').write(sdf)
 print('wrote', os.path.normpath(out))
+
+# ---- second world: same warehouse plus a moving obstacle ("walker") ----
+WALKER = '''
+    <model name="walker"><pose>4.6 -1.0 0.5 0 0 0</pose>
+      <link name="l"><gravity>false</gravity>
+        <inertial><mass>20</mass><inertia><ixx>100</ixx><iyy>100</iyy><izz>100</izz></inertia></inertial>
+        <collision name="c"><geometry><box><size>0.4 0.4 1.0</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.4 0.4 1.0</size></box></geometry>
+          <material><ambient>0.9 0.1 0.1 1</ambient><diffuse>0.9 0.1 0.1 1</diffuse></material></visual>
+      </link>
+      <plugin filename="gz-sim-velocity-control-system" name="gz::sim::systems::VelocityControl"/>
+    </model>
+'''
+dyn = os.path.join(os.path.dirname(out), 'warehouse_dynamic.sdf')
+open(dyn, 'w').write(sdf.replace('</world>', WALKER + '  </world>'))
+print('wrote', os.path.normpath(dyn))
